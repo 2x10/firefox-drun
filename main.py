@@ -1,10 +1,12 @@
 import sys
 import re as regex
 import subprocess as cmd
+import os
 from config import config
 
 def get_profiles():
-    file = open(f"{config["firefox_path"]}", "r")
+    usrfolder = os.environ['HOME']
+    file = open(f"{usrfolder}{config["firefox_path"]}", "r")
     file_content = file.read()
     
     matched_names = regex.findall(r"\bName=.*", file_content)
